@@ -31,13 +31,16 @@ def hello():
     print("I am inside hello world")
     return 'Hello World! I can make change at route: /change'
 
-@app.route('/change/<dollar>/<cents>')
+@app.route('/change/<dollar>.<cents>')
 def changeroute(dollar, cents):
     print(f"Make Change for {dollar}.{cents}")
     amount = f"{dollar}.{cents}"
     result = change(float(amount))
     return jsonify(result)
 
+@app.route("/marco/<polo>")
+def marco(polo):
+    return f"{polo}"
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
